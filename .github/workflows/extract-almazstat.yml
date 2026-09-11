@@ -1,0 +1,42 @@
+name: Extract AlmazStat archive
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/extract-almazstat.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract uploaded AlmazStat snapshot
+        run: |
+          test -f AlmazStat-current.zip
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name .git \
+            ! -name .github \
+            ! -name AlmazStat-current.zip \
+            ! -name preview-runtime.js \
+            -exec rm -rf {} +
+          unzip -o AlmazStat-current.zip -x '.github/*'
+          node --check server.js
+          node --check lib/sportmonks-provider.js
+
+      - name: Commit extracted snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No extracted changes to commit"
+          else
+            git commit -m "chore: extract AlmazStat current snapshot"
+            git push
+          fi
