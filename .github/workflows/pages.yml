@@ -21,14 +21,34 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout preview repo
         uses: actions/checkout@v4
+
+      - name: Build preview from real AlmazStat frontend
+        run: |
+          mkdir -p _site
+          curl -fsSL https://raw.githubusercontent.com/blatokomitet/AlmazStat/main/index.html -o _site/index.html
+          curl -fsSL https://raw.githubusercontent.com/blatokomitet/AlmazStat/main/style.css -o _site/style.css
+          cp preview-runtime.js _site/preview-runtime.js
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('_site/index.html')
+          s = p.read_text()
+          s = s.replace('href="/style.css"', 'href="./style.css"')
+          s = s.replace('src="/app.js" defer', 'src="./preview-runtime.js" defer')
+          s = s.replace('<title>AlmazStat — футбол без лишнего</title>', '<title>AlmazStat Preview</title>')
+          p.write_text(s)
+          PY
+          touch _site/.nojekyll
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
+
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
