@@ -1,0 +1,15 @@
+{
+  "name": "almazstat",
+  "version": "1.0.0",
+  "description": "Telegram Mini App foundation for football analytics",
+  "scripts": {
+    "start": "node server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "check:sportmonks": "node scripts/check-sportmonks.js"
+  },
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

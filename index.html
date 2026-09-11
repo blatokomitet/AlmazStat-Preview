@@ -1,28 +1,311 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#08090d" />
-  <title>AlmazStat Preview</title>
-  <style>
-    :root{--bg:#08090d;--surface:#101219;--surface2:#151821;--line:rgba(255,255,255,.10);--text:#f5f7fb;--muted:#858b99;--violet:#8b72ff;--green:#68d391;--gold:#d7c28a;color-scheme:dark;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 85% 0%,rgba(101,119,255,.15),transparent 34%),var(--bg);color:var(--text)}button{font:inherit}.app{width:min(100%,520px);margin:auto;padding:28px 16px 110px}.header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}.brand{display:flex;align-items:center;gap:12px}.logo{display:grid;width:50px;height:50px;place-items:center;border-radius:15px;background:linear-gradient(145deg,#7d8cff,#5147b8);font-size:31px}.brand h1{margin:0;font-size:22px}.sub{margin-top:3px;color:var(--muted);font-size:10px;letter-spacing:2px;text-transform:uppercase}.status{display:flex;align-items:center;gap:8px;color:var(--green);font-size:11px;font-weight:800}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px rgba(104,211,145,.65)}
-    .back{margin:0 0 34px;color:#aab3ff;font-size:13px;font-weight:700}.card{padding:24px 28px 26px;border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015)),var(--surface);box-shadow:0 24px 70px rgba(0,0,0,.34)}.league{color:var(--muted);font-size:12px;letter-spacing:3px;text-transform:uppercase}.teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;margin:22px 0 34px}.team{text-align:center;font-weight:800}.crest{display:grid;width:74px;height:74px;margin:0 auto 12px;place-items:center;border:1px solid var(--line);border-radius:50%;background:#12151e;font-size:34px}.score{text-align:center}.score strong{display:block;font-size:38px}.score span{color:var(--muted);font-size:14px}.time{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.time strong{color:var(--text)}
-    .tabs{display:flex;gap:10px;overflow:auto;margin:30px 0 54px;padding-bottom:2px;scrollbar-width:none}.tab{flex:0 0 auto;min-height:56px;padding:0 23px;border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--muted);font-size:14px;cursor:pointer}.tab.active{border-color:rgba(101,119,255,.42);background:rgba(101,119,255,.16);color:var(--text)}
-    .section-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}.section-title h2{margin:0;font-size:25px}.label{color:var(--muted);font-size:11px;letter-spacing:3px}.formbox{padding:22px;border:1px solid var(--line);border-radius:28px;background:var(--surface)}.teamform+.teamform{margin-top:24px;padding-top:24px;border-top:1px solid var(--line)}.formhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.formhead strong{font-size:15px}.sequence{display:flex;gap:8px}.badge{display:grid;width:34px;height:34px;place-items:center;border-radius:10px;background:var(--surface2);font-size:12px;font-weight:900}.w{color:var(--green)}.d{color:var(--gold)}.l{color:#ff647c}.matches{display:grid;gap:10px}.match{display:grid;grid-template-columns:1fr auto;gap:14px;padding:12px 0;color:var(--muted);font-size:12px}.match b{color:var(--text)}
-    .bottom{position:fixed;left:0;right:0;bottom:0;border-top:1px solid var(--line);background:rgba(8,9,13,.95);backdrop-filter:blur(16px)}.bottom-in{display:grid;grid-template-columns:repeat(4,1fr);width:min(100%,520px);margin:auto;padding:14px 10px calc(14px + env(safe-area-inset-bottom))}.nav{text-align:center;color:var(--muted);font-size:12px}.nav i{display:block;margin-bottom:6px;color:var(--gold);font-style:normal;font-size:20px}.nav.active{color:var(--text)}.preview-note{margin:18px 0 0;color:var(--muted);font-size:11px;text-align:center}
-  </style>
-  <script src="./app.js" defer></script>
-</head>
-<body>
-  <main class="app">
-    <header class="header"><div class="brand"><div class="logo">◇</div><div><h1>AlmazStat</h1><div class="sub">Футбол · данные · контекст</div></div></div><div class="status"><span class="dot"></span>ДАННЫЕ АКТУАЛЬНЫ</div></header>
-    <div class="back">← Все матчи</div>
-    <section class="card"><div class="league">LA LIGA</div><div class="teams"><div class="team"><div class="crest">S</div>Sevilla</div><div class="score"><strong>1:0</strong><span>Full Time</span></div><div class="team"><div class="crest">V</div>Valencia</div></div><div class="time"><span>Дата и время</span><strong>11 сент. 2026 г., 21:00</strong></div></section>
-    <nav class="tabs"><button class="tab">Обзор</button><button class="tab">Статистика</button><button class="tab">События</button><button class="tab">Составы</button><button class="tab active">Форма</button><button class="tab">Очные</button><button class="tab">Таблица</button></nav>
-    <section><div class="section-title"><h2>Последняя форма</h2><span class="label">5 МАТЧЕЙ</span></div><div class="formbox"><div class="teamform"><div class="formhead"><strong>Sevilla</strong><div class="sequence"><span class="badge w">W</span><span class="badge d">D</span><span class="badge l">L</span><span class="badge w">W</span><span class="badge w">W</span></div></div><div class="matches"><div class="match"><span>vs Getafe</span><b>2:0</b></div><div class="match"><span>vs Girona</span><b>1:1</b></div></div></div><div class="teamform"><div class="formhead"><strong>Valencia</strong><div class="sequence"><span class="badge l">L</span><span class="badge w">W</span><span class="badge d">D</span><span class="badge w">W</span><span class="badge l">L</span></div></div><div class="matches"><div class="match"><span>vs Barcelona</span><b>0:5</b></div><div class="match"><span>vs Athletic Club</span><b>2:1</b></div></div></div></div><div class="preview-note">Interactive GitHub preview · demo data</div></section>
-  </main>
-  <footer class="bottom"><div class="bottom-in"><div class="nav"><i>⌂</i>Главная</div><div class="nav active"><i>◈</i>Матчи</div><div class="nav"><i>▦</i>Лиги</div><div class="nav"><i>♢</i>Команды</div></div></footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#08090d" />
+    <meta
+      name="description"
+      content="AlmazStat — матчи, турниры и контекст футбола"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101219'/%3E%3Cpath d='M32 11 51 32 32 53 13 32Z' fill='none' stroke='%238b72ff' stroke-width='5'/%3E%3C/svg%3E"
+    />
+    <title>AlmazStat — футбол без лишнего</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <a class="brand" data-route="/" href="/">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div class="brand-name">AlmazStat</div>
+            <div class="brand-sub">Футбол · данные · контекст</div>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <div class="language-switch" role="group" aria-label="Language / Язык">
+            <button type="button" class="language-option active" data-language="ru" aria-pressed="true">РУС</button>
+            <button type="button" class="language-option" data-language="en" aria-pressed="false">ENG</button>
+          </div>
+          <div class="status" id="data-status" data-state="loading" role="status">
+            <span class="status-dot"></span>
+            <span id="data-status-text">ЗАГРУЗКА</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="matches-screen" id="matches-screen" hidden>
+        <div class="matches-heading">
+          <div>
+            <div class="screen-kicker">Матч-центр</div>
+            <div class="screen-title" id="matches-heading">Сегодня</div>
+            <div class="screen-date" id="matches-date">—</div>
+            <div class="matches-meta" id="matches-meta">Матчи загружаются</div>
+          </div>
+        </div>
+
+        <div class="date-switcher" role="group" aria-label="Выбор даты">
+          <button type="button" data-day-offset="-1">Вчера</button>
+          <button class="active" type="button" data-day-offset="0">Сегодня</button>
+          <button type="button" data-day-offset="1">Завтра</button>
+        </div>
+
+        <div class="match-center-tools">
+          <label class="match-search">
+            <span class="visually-hidden">Поиск матчей</span>
+            <span class="match-search-icon" aria-hidden="true">⌕</span>
+            <input
+              id="match-search"
+              type="search"
+              placeholder="Команда или лига"
+              autocomplete="off"
+              enterkeyhint="search"
+            />
+          </label>
+
+          <div class="match-filters" id="match-filters" role="group" aria-label="Фильтр матчей">
+            <button class="active" type="button" data-match-filter="all">Все</button>
+            <button type="button" data-match-filter="live">LIVE</button>
+            <button type="button" data-match-filter="upcoming">Скоро</button>
+            <button type="button" data-match-filter="finished">Завершённые</button>
+          </div>
+        </div>
+
+        <div class="matches-state" id="matches-state">Загрузка матчей</div>
+        <div class="league-groups" id="matches-list"></div>
+      </section>
+
+      <section class="dashboard-screen" id="dashboard-screen" hidden aria-live="polite"></section>
+
+      <section class="analysis-screen" id="analysis-screen" hidden>
+        <a class="back-link" data-route="/matches" href="/matches">← Все матчи</a>
+        <div class="analysis-state" id="analysis-state">Загрузка аналитики</div>
+        <div id="analysis-content" hidden>
+
+      <section class="match-card">
+        <a class="league match-entity-link" id="league-link"><span id="league-name">Нет данных</span></a>
+
+        <div class="teams">
+          <a class="team match-entity-link" id="home-team-link">
+            <div class="crest" id="home-crest">
+              <span class="crest-placeholder" aria-hidden="true">◇</span>
+              <img id="home-logo" alt="" hidden />
+            </div>
+            <div class="team-name" id="home-name">Нет данных</div>
+          </a>
+
+          <div class="match-center">
+            <div class="score" id="match-score">— : —</div>
+            <div class="fixture-status" id="fixture-status">Нет данных</div>
+          </div>
+
+          <a class="team match-entity-link" id="away-team-link">
+            <div class="crest" id="away-crest">
+              <span class="crest-placeholder" aria-hidden="true">◇</span>
+              <img id="away-logo" alt="" hidden />
+            </div>
+            <div class="team-name" id="away-name">Нет данных</div>
+          </a>
+        </div>
+
+        <div class="match-time">
+          <span>Дата и время</span>
+          <strong id="match-date">Нет данных</strong>
+        </div>
+      </section>
+
+      <nav class="tabs" role="tablist" aria-label="Разделы матча">
+        <button class="tab active" type="button" role="tab" aria-selected="true" aria-controls="view-overview" data-view="overview">Обзор</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="view-statistics" data-view="statistics">Статистика</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="view-events" data-view="events">События</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="view-lineups" data-view="lineups">Составы</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="view-form" data-view="form">Форма</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="view-h2h" data-view="h2h">Очные</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="view-standings" data-view="standings">Таблица</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="view-odds" data-view="odds">Коэффициенты</button>
+      </nav>
+
+      <div id="view-overview" class="content-view active" role="tabpanel">
+        <section class="section">
+          <div class="section-head">
+            <div class="section-title">Главный прогноз</div>
+             <div class="section-label">Источник данных</div>
+          </div>
+
+          <div class="prediction">
+            <div id="prediction-content" hidden>
+              <div class="prediction-top">
+                <div class="prediction-label">Прогноз матча</div>
+              </div>
+
+              <div class="prediction-main">
+                <strong id="prediction-pick">Нет данных</strong>
+                <span id="prediction-winner"></span>
+              </div>
+
+              <div class="probabilities">
+                <div class="prob">
+                  <span>Победа 1</span>
+                  <strong id="prediction-home">Нет данных</strong>
+                </div>
+                <div class="prob">
+                  <span>Ничья</span>
+                  <strong id="prediction-draw">Нет данных</strong>
+                </div>
+                <div class="prob">
+                  <span>Победа 2</span>
+                  <strong id="prediction-away">Нет данных</strong>
+                </div>
+              </div>
+
+              <p class="prediction-advice" id="prediction-advice" hidden></p>
+            </div>
+            <div class="empty-state" id="prediction-empty">Прогноз недоступен</div>
+          </div>
+        </section>
+
+        <section class="section overview-signal-section">
+          <div class="section-head">
+            <div class="section-title">Срез матча</div>
+            <div class="section-label">Только доступные данные</div>
+          </div>
+          <div class="overview-signal" id="overview-signal"></div>
+        </section>
+
+        <section class="section" id="metrics-section" hidden>
+          <div class="section-head">
+            <div class="section-title">Ключевые показатели</div>
+            <div class="section-label">Матч</div>
+          </div>
+          <div class="stats" id="metrics-list"></div>
+        </section>
+      </div>
+
+      <div id="view-statistics" class="content-view" role="tabpanel">
+        <section class="section">
+          <div class="section-head">
+            <div class="section-title">Статистика матча</div>
+             <div class="section-label">Доступные данные</div>
+          </div>
+          <div class="fixture-statistics" id="statistics-content"></div>
+        </section>
+      </div>
+
+      <div id="view-events" class="content-view" role="tabpanel">
+        <section class="section">
+          <div class="section-head">
+            <div class="section-title">События матча</div>
+            <div class="section-label">Хронология</div>
+          </div>
+          <div class="fixture-events" id="events-content"></div>
+        </section>
+      </div>
+
+      <div id="view-lineups" class="content-view" role="tabpanel">
+        <section class="section">
+          <div class="section-head">
+            <div class="section-title">Составы команд</div>
+            <div class="section-label">Матч</div>
+          </div>
+          <div class="fixture-lineups" id="lineups-content"></div>
+        </section>
+      </div>
+
+      <div id="view-form" class="content-view" role="tabpanel">
+        <section class="section">
+          <div class="section-head">
+            <div class="section-title">Последняя форма</div>
+            <div class="section-label">5 матчей</div>
+          </div>
+          <div class="form-card" id="form-content"></div>
+        </section>
+      </div>
+
+      <div id="view-h2h" class="content-view" role="tabpanel">
+        <section class="section">
+          <div class="section-head">
+            <div class="section-title">Очные встречи</div>
+            <div class="section-label">Последние матчи</div>
+          </div>
+          <div class="list-card" id="h2h-content"></div>
+        </section>
+      </div>
+
+      <div id="view-standings" class="content-view" role="tabpanel">
+        <section class="section">
+          <div class="section-head">
+            <div class="section-title">Таблица</div>
+            <div class="section-label" id="standings-label">Сезон</div>
+          </div>
+          <div class="standings-list" id="standings-content"></div>
+        </section>
+      </div>
+
+      <div id="view-odds" class="content-view" role="tabpanel">
+        <section class="section">
+          <div class="section-head">
+            <div class="section-title">Коэффициенты</div>
+             <div class="section-label">Доступные данные</div>
+          </div>
+          <div class="list-card" id="odds-content"></div>
+        </section>
+      </div>
+
+        </div>
+      </section>
+
+      <section class="data-screen" id="data-screen" hidden>
+        <div class="screen-kicker" id="data-kicker">Футбольные данные</div>
+        <h1 class="placeholder-title" id="data-title">Раздел</h1>
+        <p class="placeholder-copy" id="data-description"></p>
+        <div id="data-content" aria-live="polite"></div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <span class="footer-mark" aria-hidden="true">◇</span>
+          <span>AlmazStat</span>
+        </div>
+        <nav class="footer-links" aria-label="Разделы AlmazStat">
+          <a data-route="/" href="/">Главная</a>
+          <a data-route="/matches" href="/matches">Матчи</a>
+          <a data-route="/leagues" href="/leagues">Лиги</a>
+          <a data-route="/teams" href="/teams">Команды</a>
+          <a data-route="/players" href="/players">Игроки</a>
+          <a data-route="/statistics" href="/statistics">Статистика</a>
+        </nav>
+         <div class="footer-note">Данные матчей и турниров · AlmazStat © 2026</div>
+      </footer>
+    </main>
+
+    <footer class="bottom">
+      <div class="bottom-inner">
+        <a class="bottom-item" data-shell-nav="/" data-route="/" href="/">
+          <div class="bottom-icon" aria-hidden="true">⌂</div>
+          Главная
+        </a>
+        <a class="bottom-item" data-shell-nav="/matches" data-route="/matches" href="/matches">
+          <div class="bottom-icon" aria-hidden="true">◈</div>
+          Матчи
+        </a>
+        <a class="bottom-item" data-shell-nav="/leagues" data-route="/leagues" href="/leagues">
+          <div class="bottom-icon" aria-hidden="true">▦</div>
+          Лиги
+        </a>
+        <a class="bottom-item" data-shell-nav="/teams" data-route="/teams" href="/teams">
+          <div class="bottom-icon" aria-hidden="true">♢</div>
+          Команды
+        </a>
+      </div>
+    </footer>
+  </body>
 </html>

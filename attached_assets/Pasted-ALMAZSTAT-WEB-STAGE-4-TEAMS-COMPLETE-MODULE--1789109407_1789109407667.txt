@@ -1,0 +1,463 @@
+ALMAZSTAT WEB — STAGE 4: TEAMS — COMPLETE MODULE
+
+ЦЕЛЬ
+
+За ОДИН проход реализовать полноценный раздел Teams в существующем AlmazStat.
+
+Нужно закончить:
+1. /teams — каталог команд;
+2. /team/:id — страница конкретной команды;
+3. Overview;
+4. Matches;
+5. Squad;
+6. Statistics;
+7. Form;
+8. Standings.
+
+ВАЖНО:
+- не начинать Players, Global Statistics, News, Dashboard, Telegram;
+- не делать deployment;
+- не проводить global redesign;
+- не ломать уже готовые Matches и Leagues;
+- использовать существующий Express + Vanilla JS + HTML/CSS;
+- переиспользовать существующий cache и API helpers;
+- никаких fake/demo данных в production code;
+- не делать большой refactor.
+
+==================================================
+1. ROUTING
+==================================================
+
+Реализовать:
+
+/teams
+/team/:id
+
+Требования:
+- History API;
+- browser Back / Forward;
+- direct URL;
+- существующие маршруты продолжают работать;
+- /teams больше не placeholder;
+- ссылки из League Teams должны открывать /team/:id;
+- Header / Footer / Bottom Nav должны вести на реальные маршруты.
+
+==================================================
+2. /teams — TEAMS CATALOG
+==================================================
+
+Создать полноценный каталог команд.
+
+Показывать реальные данные API-Football:
+
+- logo;
+- team name;
+- country;
+- founded, если доступно;
+- stadium/venue, если доступно.
+
+Добавить:
+
+- search по team name;
+- фильтр по country, если это можно сделать без лишних тяжёлых API calls;
+- фильтр по league, если существующая архитектура позволяет это сделать эффективно;
+- loading;
+- empty;
+- error;
+- Retry.
+
+Не делать искусственный popularity ranking.
+
+Карточка команды открывает:
+
+/team/TEAM_ID
+
+==================================================
+3. TEAM DETAILS HERO
+==================================================
+
+На /team/:id показать:
+
+- logo;
+- team name;
+- country;
+- founded;
+- venue/stadium;
+- city;
+- capacity;
+- surface;
+- address;
+
+только если реальные данные доступны.
+
+Никаких undefined/null.
+
+==================================================
+4. TEAM TABS
+==================================================
+
+Создать вкладки:
+
+ОБЗОР
+МАТЧИ
+СОСТАВ
+СТАТИСТИКА
+ФОРМА
+ТАБЛИЦА
+
+Lazy-load тяжёлые данные.
+
+Повторное открытие уже загруженной вкладки не должно создавать новый frontend HTTP request в рамках текущего state.
+
+==================================================
+5. OVERVIEW
+==================================================
+
+Показать полезную реальную сводку:
+
+- team info;
+- current season context;
+- league/competition context, если доступен;
+- последние результаты;
+- ближайшие матчи;
+- краткие реальные season facts, если API их даёт.
+
+Не придумывать AI summary.
+Не придумывать “team strength”, “rating”, “form score”.
+
+==================================================
+6. MATCHES
+==================================================
+
+Показать fixtures конкретной команды.
+
+Разделить/фильтровать:
+
+- Upcoming;
+- LIVE;
+- Finished.
+
+Для каждого матча:
+
+- date/time;
+- competition;
+- round;
+- home;
+- away;
+- logos;
+- score;
+- status.
+
+Клик должен открывать существующий Match Details.
+
+НЕ создавать отдельную копию Match Details.
+
+==================================================
+7. SQUAD
+==================================================
+
+Использовать реальный squad endpoint API-Football.
+
+Показать:
+
+- player photo;
+- name;
+- age, если доступно;
+- number;
+- position.
+
+Группировать по позициям:
+
+GK
+DEF
+MID
+ATT
+
+Если API возвращает coach отдельно — можно показать coach.
+
+Никаких дополнительных player-detail requests на каждого игрока при открытии squad.
+
+Никаких fake photos/placeholders кроме нейтрального visual placeholder без выдуманных данных.
+
+==================================================
+8. STATISTICS
+==================================================
+
+Использовать реальные team season statistics.
+
+Если API поддерживает /teams/statistics или эквивалент:
+
+Показывать реально доступные категории, например:
+
+- played;
+- wins;
+- draws;
+- losses;
+- goals for;
+- goals against;
+- clean sheets;
+- failed to score;
+- biggest wins/losses;
+- goals by minute;
+- fixtures totals;
+- penalty data;
+- formations;
+- cards;
+
+ТОЛЬКО если реально вернул API.
+
+Не обязательно показывать каждый возможный field.
+Сделать чистый читаемый UI.
+
+Не создавать:
+- AlmazStat Team Rating;
+- power score;
+- AI percentage;
+- synthetic metrics.
+
+==================================================
+9. FORM
+==================================================
+
+Использовать реальные последние fixtures команды.
+
+Показать последние матчи и результат:
+
+W / D / L
+
+Если возможно без дополнительных лишних запросов:
+- score;
+- opponent;
+- home/away;
+- date.
+
+Form должна строиться только из реальных fixtures.
+
+Не рассчитывать искусственный confidence score.
+
+==================================================
+10. STANDINGS
+==================================================
+
+Если team принадлежит текущей league/season и standings доступны:
+
+показать контекст команды в таблице.
+
+Можно показать:
+- полную standings таблицу;
+или
+- компактный блок вокруг позиции команды;
+
+в зависимости от существующих компонентов.
+
+Реальные поля:
+
+- rank;
+- played;
+- win;
+- draw;
+- lose;
+- GF;
+- GA;
+- GD;
+- points;
+- form.
+
+Если standings для competition отсутствует:
+honest unavailable state.
+
+==================================================
+11. SEASON / LEAGUE CONTEXT
+==================================================
+
+Team data часто зависит от:
+
+team + league + season.
+
+Использовать текущий league/season context, если пользователь пришёл из League Details.
+
+При прямом /team/:id:
+определить разумный текущий season/competition context только из реальных API данных.
+
+Если несколько доступных league/season:
+дать selector только если это можно сделать без архитектурного хаоса.
+
+Не угадывать silently неправильную league.
+
+==================================================
+12. BACKEND / API COST
+==================================================
+
+КРИТИЧНО:
+минимизировать API-Football requests.
+
+Создать только необходимые backend endpoints.
+
+Использовать существующий cache.
+
+Предпочтительно:
+
+team metadata — long TTL;
+squad — long TTL;
+season statistics — medium/long TTL;
+standings — existing standings cache;
+fixtures — разумный TTL в зависимости от status.
+
+Не делать polling.
+
+Не запрашивать player details по одному на каждого игрока.
+
+Ошибки не кэшировать как success/empty.
+
+Successful empty response можно кэшировать.
+
+Если API-Football возвращает 502:
+показывать Data Error + Retry.
+Не использовать fake data.
+
+==================================================
+13. UI / DESIGN
+==================================================
+
+Сохранить существующий AlmazStat style:
+
+background #08090d
+surface #101219
+secondary #151821
+blue #6577ff
+violet #8b72ff
+green #68d391
+red #ff647c
+gold #d7c28a
+text #f5f7fb
+muted #858b99
+
+Premium Football Intelligence.
+
+НЕ превращать интерфейс в sportsbook.
+Без neon/cyberpunk.
+
+Не делать глобальный redesign.
+
+==================================================
+14. MOBILE
+==================================================
+
+Должно корректно работать:
+
+320
+360
+390
+412
+430
+520px
+
+Особенно проверить:
+
+- Team Hero;
+- длинные team names;
+- catalog search;
+- cards;
+- tabs;
+- fixtures;
+- squad;
+- statistics;
+- standings;
+- bottom nav;
+- safe area.
+
+Никакого horizontal PAGE overflow.
+
+Таблицы могут скроллиться внутри контейнера.
+
+Tap targets >=44px, где применимо.
+
+==================================================
+15. ACCESSIBILITY
+==================================================
+
+Для team tabs:
+
+- role="tab";
+- aria-selected;
+- aria-controls;
+- keyboard focus;
+- Enter/Space;
+- ArrowLeft/ArrowRight;
+- Home/End;
+- visible focus state.
+
+Retry controls должны быть keyboard accessible.
+
+==================================================
+16. DATA INTEGRITY
+==================================================
+
+Строго запрещено:
+
+- fake teams;
+- fake squad;
+- fake fixtures;
+- fake statistics;
+- fake form;
+- fake standings;
+- demo values в production UI;
+- undefined;
+- NaN;
+- API key во frontend.
+
+Все данные — только API-Football или честное unavailable/error состояние.
+
+==================================================
+17. ACCEPTANCE
+==================================================
+
+Stage 4 готов, если:
+
+- /teams функционален;
+- catalog/search работает;
+- /team/:id работает;
+- Team Hero заполняется реальными данными;
+- Overview работает;
+- Matches работают;
+- Match Details открывается;
+- Squad работает;
+- Statistics работает;
+- Form работает;
+- Standings работает или честно показывает unavailable;
+- lazy loading работает;
+- repeated tabs не создают waste;
+- upstream 502 не ломает страницу;
+- mobile стабилен;
+- browser Back/Forward работает;
+- Leagues и Matches не сломаны;
+- нет fake data;
+- нет uncaught JS errors;
+- API key не попал во frontend.
+
+Deployment НЕ выполнять.
+
+==================================================
+18. В КОНЦЕ
+
+Не запускай большой автономный QA.
+Не делай визуальные итерации ради красоты.
+Не начинай следующий Stage.
+
+После реализации только необходимые sanity checks и короткий отчёт:
+
+FILES CHANGED
+ROUTES
+BACKEND ENDPOINTS
+API REQUEST STRATEGY
+CACHE
+TEAMS CATALOG
+TEAM DETAILS
+MATCHES
+SQUAD
+STATISTICS
+FORM
+STANDINGS
+MOBILE
+KNOWN LIMITATIONS
+STAGE 4 STATUS

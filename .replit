@@ -1,0 +1,65 @@
+modules = ["nodejs-24", "python-base-3.13"]
+
+[deployment]
+run = "pnpm start"
+router = "application"
+deploymentTarget = "autoscale"
+
+[deployment.postBuild]
+args = ["pnpm", "store", "prune"]
+env = { "CI" = "true" }
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start AlmazStat"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "AlmazStat TEST DEMO Preview"
+
+[[workflows.workflow]]
+name = "Start AlmazStat"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "PORT=5000 pnpm start"
+waitForPort = 5000
+
+[[workflows.workflow]]
+name = "AlmazStat TEST DEMO Preview"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "sed \"s/process.env.PORT = '5099';/process.env.PORT = process.env.PORT || '5099';/\" /tmp/almazstat-final-qa-mock.mjs | PORT=8081 node --input-type=module"
+waitForPort = 8081
+
+[agent]
+stack = "PNPM_WORKSPACE"
+expertMode = true
+
+[postMerge]
+path = "scripts/post-merge.sh"
+timeoutMs = 20000
+
+[nix]
+channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]

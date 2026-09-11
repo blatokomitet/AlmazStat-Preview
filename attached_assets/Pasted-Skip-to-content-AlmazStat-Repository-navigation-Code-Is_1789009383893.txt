@@ -1,0 +1,249 @@
+Skip to content
+AlmazStat
+Repository navigation
+Code
+Issues
+Pull requests
+Agents
+Get started with GitHub Actions
+Build, test, and deploy your code. Make code reviews, branch management, and issue triaging work the way you want. Select a workflow to get started.
+
+Skip this and set up a workflow yourself 
+
+Search workflows
+Suggested for this repository
+Webpack
+By GitHub Actions
+
+Webpack logo
+Build a NodeJS project with npm and webpack.
+
+JavaScript
+Deno
+By GitHub Actions
+
+Deno logo
+Test your Deno project
+
+JavaScript
+Jekyll using Docker image
+By GitHub Actions
+
+Jekyll using Docker image logo
+Package a Jekyll site using the jekyll/builder Docker image.
+
+HTML
+Publish Node.js Package to GitHub Packages
+By GitHub Actions
+
+Publish Node.js Package to GitHub Packages logo
+Publishes a Node.js package to GitHub Packages.
+
+JavaScript
+Publish Node.js Package
+By GitHub Actions
+
+Publish Node.js Package logo
+Publishes a Node.js package to npm.
+
+JavaScript
+Deployment
+View alldeployment workflows
+Deploy Node.js to Azure Web App
+By Microsoft Azure
+
+Deploy Node.js to Azure Web App logo
+Build a Node.js project and deploy it to an Azure Web App.
+
+Deployment
+Deploy Node.js to Azure Functions App
+By Microsoft Azure
+
+Deploy Node.js to Azure Functions App logo
+Build a Node.js project and deploy it to an Azure Functions App on Windows or Linux.
+
+Deployment
+Deploy to Amazon ECS
+By Amazon Web Services
+
+Deploy to Amazon ECS logo
+Deploy a container to an Amazon ECS service powered by AWS Fargate or Amazon EC2.
+
+Deployment
+Build and Deploy to GKE
+By Google Cloud
+
+Build and Deploy to GKE logo
+Build a docker container, publish it to Google Container Registry, and deploy to GKE.
+
+Deployment
+Terraform
+By HashiCorp
+
+Terraform logo
+Set up Terraform CLI in your GitHub Actions workflow.
+
+Deployment
+Deploy to Alibaba Cloud ACK
+By Alibaba Cloud
+
+Deploy to Alibaba Cloud ACK logo
+Deploy a container to Alibaba Cloud Container Service for Kubernetes (ACK).
+
+Deployment
+Deploy to IBM Cloud Kubernetes Service
+By IBM
+
+Deploy to IBM Cloud Kubernetes Service logo
+Build a docker container, publish it to IBM Cloud Container Registry, and deploy to IBM Cloud Kubernetes Service.
+
+Deployment
+Tencent Kubernetes Engine
+By Tencent Cloud
+
+Tencent Kubernetes Engine logo
+This workflow will build a docker container, publish and deploy it to Tencent Kubernetes Engine (TKE).
+
+Deployment
+Security
+View allsecurity workflows
+CodeQL Analysis
+By GitHub
+
+Security analysis from GitHub for C, C++, C#, Go, Java, JavaScript, TypeScript, Python, Ruby, Kotlin and Swift developers.
+
+Code scanning
+Fortify Scan
+By OpenText
+
+Fortify Scan logo
+Integrate Fortify's comprehensive static code analysis (SAST) for 33+ languages into your DevSecOps workflows.
+
+Code scanning
+SonarCloud
+By Sonar
+
+SonarCloud logo
+Static analysis of code for vulnerability detection, covering 26+ languages. Start cleaning your code in minutes!
+
+Code scanning
+SonarQube
+By Sonar
+
+SonarQube logo
+Static analysis of code for vulnerability detection, covering 26+ languages. Start cleaning your code in minutes!
+
+Code scanning
+Continuous integration
+View allcontinuous integration workflows
+SLSA Generic generator
+By Open Source Security Foundation (OpenSSF)
+
+SLSA Generic generator logo
+Generate SLSA3 provenance for your existing release workflows
+
+Go
+Datadog Synthetics
+By Datadog
+
+Datadog Synthetics logo
+Run Datadog Synthetic tests within your GitHub Actions workflow
+
+JavaScript
+Node.js
+By GitHub Actions
+
+Node.js logo
+Build and test a Node.js project with npm.
+
+JavaScript
+R package
+By GitHub Actions
+
+R package logo
+Create and test an R package on multiple R versions.
+
+R
+Automation
+View allautomation workflows
+Manual workflow
+By GitHub Actions
+
+Simple workflow that is manually triggered.
+
+Automation
+Greetings
+By GitHub Actions
+
+Greets users who are first time contributors to the repo
+
+Automation
+Stale
+By GitHub Actions
+
+Checks for stale issues and pull requests
+
+Automation
+Labeler
+By GitHub Actions
+
+Labels pull requests based on the files changed
+
+Automation
+Pages
+View allPages workflows
+Static HTML
+By GitHub Actions
+
+Static HTML logo
+Deploy static files in a repository without a build.
+
+HTML
+NuxtJS
+By GitHub Actions
+
+NuxtJS logo
+Package a NuxtJS site.
+
+mdBook
+By GitHub Actions
+
+mdBook logo
+Package a site using mdBook.
+
+GitHub Pages Jekyll
+By GitHub Actions
+
+GitHub Pages Jekyll logo
+Package a Jekyll site with GitHub Pages dependencies preinstalled.
+
+Browse all categories
+Deployment
+Security
+Continuous integration
+Automation
+Pages
+Learn more about GitHub Actions
+Getting started and core concepts
+New to Actions? Start here. Learn the core concepts and how to get started.
+
+Configuring and managing workflows
+Create custom workflows to control your project's life cycle processes.
+
+Any language
+Language and framework guides
+Guides for projects written in many programming languages.
+
+Footer
+© 2026 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Community
+Docs
+Contact
+Manage cookies
+Do not share my personal information
+ Create new workflow · blatokomitet/AlmazStat

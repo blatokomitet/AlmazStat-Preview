@@ -1,0 +1,58 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "vje8pQIjBKIZWuGcLwTK8"
+uri = "file://screenshots/almazstat-fixture-1520863.png"
+type = "image"
+title = "AlmazStat — fixture 1520863"
+description = "Мобильный preview с реальными данными API-Football для Criciuma — Juventude."
+logical_id = "6263b8be-509a-4e7e-aa81-85932d24b55d"
+content_hash = "sha256:c57e94422111d459644686cfdae9c541d70bc7fccb85078ba65f6b551468658f"
+size = 128004
+mtime_ms = 1788990175312
+storage_uri = "gcs://replit-rams-assets-kira/rams/assets/repl:8e15cde6-489c-49c7-9a06-bba9be55e0a9/6263b8be-509a-4e7e-aa81-85932d24b55d/e17921c2-38e7-4998-9f67-f33e2fc5c518"
+storage_version_token = "1788990192275317"
+content_type = "image/png"
+
+[[outputs]]
+id = "neZz6B8QQp1OEAdHU-f_q"
+uri = "file://screenshots/almazstat-v1-matches.png"
+type = "image"
+title = "AlmazStat v1.0 — экран матчей"
+description = "Мобильный экран с реальными матчами, сгруппированными по лиге."
+logical_id = "aaf9483e-9236-426f-a40b-9834872065b3"
+content_hash = "sha256:75b032ccc62b16310bd97fdbb1f7c7cfdb41cad9bb8c33b43cfcaa625406b509"
+size = 83269
+mtime_ms = 1788991731952
+storage_uri = "gcs://replit-rams-assets-kira/rams/assets/repl:8e15cde6-489c-49c7-9a06-bba9be55e0a9/aaf9483e-9236-426f-a40b-9834872065b3/0eb2b10f-e7ec-4d71-8763-7f22e724ec13"
+storage_version_token = "1788991755191271"
+content_type = "image/png"
+
+[[outputs]]
+id = "aUCMe9HvpA8ssjF1vb6zW"
+uri = "file://exports/AlmazStat-full-project.zip"
+type = "unspecified"
+title = "AlmazStat — полный архив проекта"
+description = "ZIP с исходниками, настройками запуска, документацией, исходным ТЗ и скриншотами. Секреты, .git и node_modules исключены."
+logical_id = "c11d4698-2e6e-42e3-814f-81aa4afe1db1"
+content_hash = "sha256:60a2a162e623a2880bb2b5fcc665df5004de492d0394c2d4a09bffcaa868a486"
+size = 322504
+mtime_ms = 1789005197423
+storage_uri = "gcs://replit-rams-assets-kira/rams/assets/repl:8e15cde6-489c-49c7-9a06-bba9be55e0a9/c11d4698-2e6e-42e3-814f-81aa4afe1db1/eb2bbe8e-d926-43c7-8581-4dd61f78ac20"
+storage_version_token = "1789005202706317"
+content_type = "application/octet-stream"
+
+[[outputs]]
+id = "42xawYtJINAbrpQcUpQQY"
+uri = "file://downloads/almazstat.zip"
+type = "unspecified"
+title = "Скачать almazstat.zip"
+description = "Полный архив проекта AlmazStat, 315 КБ. Нажмите на карточку файла для скачивания."
+logical_id = "d4c8ba19-bfcf-4301-b59a-59e32396b6e2"
+content_hash = "sha256:60a2a162e623a2880bb2b5fcc665df5004de492d0394c2d4a09bffcaa868a486"
+size = 322504
+mtime_ms = 1789005396272
+storage_uri = "gcs://replit-rams-assets-kira/rams/assets/repl:8e15cde6-489c-49c7-9a06-bba9be55e0a9/d4c8ba19-bfcf-4301-b59a-59e32396b6e2/0bbab382-c2c0-4eca-8057-b0b8cc3731b2"
+storage_version_token = "1789005401917755"
+content_type = "application/octet-stream"

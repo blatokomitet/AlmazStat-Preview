@@ -1,0 +1,5 @@
+- [API-Football contract handling](api-football-contract.md) — treat plan/access failures and request quotas as explicit upstream state, never as empty or demo data.
+- [Preview base path](preview-base-path.md) — artifact previews may mount the vanilla app below `/preview`; normalize client routes without prefixing API calls.
+- [Player match integrity](player-match-integrity.md) — do not present team fixtures as player appearances; efficient player match history is unavailable without per-fixture fan-out.
+- [League-wide statistics limits](league-wide-statistics-limits.md) — use direct leader endpoints; never fan out team statistics across every club in a league.
+- [News provider boundary](news-provider-boundary.md) — news is not API-Football data; keep successful not-configured state until a dedicated provider is explicitly connected.
